@@ -1,22 +1,62 @@
 <div class="container">
   <div class="row">
-    
+
      <div class="col-md-6">
 
       <h1 class="form-signin-heading">Your profile</h1>
 
       <div class="form-horizontal">
         <div class="form-group">
-          <label class="col-sm-3 control-label">Full name</label>
+          <label class="col-sm-3 control-label">Name</label>
           <p class="form-control-static">{{ details?.name }}</p>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Surname</label>
+          <p class="form-control-static">{{ details?.surname }}</p>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Patronymic</label>
+          <p class="form-control-static">{{ details?.patronymic }}</p>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Place work</label>
+          <p class="form-control-static">{{ details?.placeWork }}</p>
         </div>
         <div class="form-group">
           <label class="col-sm-3 control-label">Email</label>
           <p class="form-control-static">{{ details?.email }}</p>
         </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Position</label>
+          <p class="form-control-static">{{ details?.position }}</p>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Academic degree</label>
+          <p class="form-control-static">{{ details?.academicDegree }}</p>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Academic rank</label>
+          <p class="form-control-static">{{ details?.academicRank }}</p>
+        </div>
       </div>
 
     </div>
 
+  </div>
+</div>
+
+<div class="short-information">
+  <p>Имя: <span>{{ details?.name }} </span></p>
+  <p>Место работы: {{details?.placeWork}}</p>
+  <p>Должность: {{ details?.position}}</p>
+  <p>Учёная степень: Lorem ipsum dolor sit amet.</p>
+  <p>Учёное звание: Lorem ipsum dolor sit amet.</p>
+  <p>Почта: {{ details?.email }}</p>
+
+  <div class="common-information">
+    <div class="common-count-works" title="Колличество работ">
+      <p>7</p>
+      <i class="material-icons">import_contacts</i>
+    </div>
   </div>
 </div>

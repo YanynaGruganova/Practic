@@ -17,9 +17,14 @@ module.exports.register = function(req, res) {
   // }
 
   var user = new User();
-
   user.name = req.body.name;
+  user.surname = req.body.surname;
+  user.patronymic = req.body.patronymic;
   user.email = req.body.email;
+  user.placeWork = req.body.placeWork;
+  user.position = req.body.position;
+  user.academicDegree = req.body.academicDegree;
+  user.academicRank = req.body.academicRank;
 
   user.setPassword(req.body.password);
 

@@ -1,11 +1,16 @@
 var mongoose = require('mongoose');
 var gracefulShutdown;
-var dbURI = 'mongodb://localhost/meanAuth';
+var dbURI = 'mongodb+srv://conference-server:fitrfitr123@bntu-conference-dhphv.mongodb.net/bntu-conference?retryWrites=true&w=majority';
 if (process.env.NODE_ENV === 'production') {
   dbURI = process.env.MONGOLAB_URI;
 }
+options = {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true
+}
 
-mongoose.connect(dbURI);
+mongoose.connect(dbURI, options);
 
 // CONNECTION EVENTS
 mongoose.connection.on('connected', function() {

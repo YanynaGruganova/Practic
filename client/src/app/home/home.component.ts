@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
+import {AuthenticationService} from "../authentication.service";
 
 @Component({
-  templateUrl: './home.component.html'
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.less']
 })
-export class HomeComponent {}
+export class HomeComponent {
+  constructor(public auth: AuthenticationService) {}
+}

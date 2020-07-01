@@ -6,5 +6,9 @@ import { AuthenticationService } from './authentication.service';
   templateUrl: './app.component.html'
 })
 export class AppComponent {
-  constructor(public auth: AuthenticationService) {}
+  constructor(private auth: AuthenticationService) {}
+  user? = this.getUser();
+  getUser() {
+    return this.auth.getUserDetails();
+  }
 }

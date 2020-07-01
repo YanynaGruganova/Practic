@@ -6,8 +6,32 @@
       <p class="lead">Already a member? Please <a routerLink="/login">log in</a> instead.</p>
       <form (submit)="register()">
         <div class="form-group">
-          <label for="name">Full name</label>
+          <label for="name">Name</label>
           <input type="text" class="form-control" name="name" placeholder="Enter your name" [(ngModel)]="credentials.name">
+        </div>
+        <div class="form-group">
+          <label for="surname">Surname</label>
+          <input type="text" class="form-control" name="surname" placeholder="Enter your surname" [(ngModel)]="credentials.surname">
+        </div>
+        <div class="form-group">
+          <label for="patronymic">Patronymic</label>
+          <input type="text" class="form-control" name="patronymic" placeholder="Enter your patronymic" [(ngModel)]="credentials.patronymic">
+        </div>
+        <div class="form-group">
+          <label for="placeWork">Place work</label>
+          <input type="text" class="form-control" name="placeWork" placeholder="Enter your place work" [(ngModel)]="credentials.placeWork">
+        </div>
+        <div class="form-group">
+          <label for="position">Position</label>
+          <input type="text" class="form-control" name="position" placeholder="Enter your position" [(ngModel)]="credentials.position">
+        </div>
+        <div class="form-group">
+          <label for="academicDegree">Academic degree</label>
+          <input type="text" class="form-control" name="academicDegree" placeholder="Enter your academic degree" [(ngModel)]="credentials.academicDegree">
+        </div>
+        <div class="form-group">
+          <label for="academicRank">Academic rank</label>
+          <input type="text" class="form-control" name="academicRank" placeholder="Enter your academic rank" [(ngModel)]="credentials.academicRank">
         </div>
         <div class="form-group">
           <label for="email">Email address</label>

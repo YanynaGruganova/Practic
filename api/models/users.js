@@ -12,6 +12,30 @@ var userSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  surname: {
+    type: String,
+    required: true
+  },
+  patronymic: {
+    type: String,
+    required: true
+  },
+  placeWork: {
+    type: String,
+    required: true
+  },
+  position: {
+    type: String,
+    required: true
+  },
+  academicDegree: {
+    type: String,
+    required: false
+  },
+  academicRank: {
+    type: String,
+    required: false
+  },
   hash: String,
   salt: String
 });
