@@ -11,12 +11,14 @@ import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { AuthenticationService } from './authentication.service';
 import { AuthGuardService } from './auth-guard.service';
+import { ConferenceComponent } from './conference/conference.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService] }
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService] },
+  { path: 'createConference', component: ConferenceComponent }
 ];
 
 @NgModule({
@@ -25,7 +27,8 @@ const routes: Routes = [
     ProfileComponent,
     LoginComponent,
     RegisterComponent,
-    HomeComponent
+    HomeComponent,
+    ConferenceComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +37,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
   ],
   providers: [
-    AuthenticationService, 
+    AuthenticationService,
     AuthGuardService
   ],
   bootstrap: [AppComponent]

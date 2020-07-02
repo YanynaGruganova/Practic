@@ -33,13 +33,13 @@
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Menu
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Create conference</a>
+        <div  class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" routerLink="/createConference">Create conference</a>
           <a class="dropdown-item" href="#">All conferences</a>
         </div>
       </li>
-      <li id="logout" *ngIf="auth.isLoggedIn()" class="nav-item">
-        <a class="nav-link" (click)="auth.logout()">Logout</a>
+      <li  *ngIf="auth.isLoggedIn()" class="nav-item">
+        <a class="nav-link" href="#" (click)="auth.logout()">Logout</a>
       </li>
     </ul>
   </div>
