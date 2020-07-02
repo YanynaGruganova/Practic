@@ -8,8 +8,3 @@ To run, you just have MongoDB installed and running, and NodeJS installed.
 * Open a new terminal and navigate to the `client` directory, `npm install` to setup the Angular dependencies, and `npm start` to start the local development server
 * Open http://localhost:4200 to see the application
 
-	Почта:
-    bntu.conference@gmail.com
-	пароль (bntuisthebest)
-	Пароль MongoDB:
-    mongo pass: fitrfitr123
