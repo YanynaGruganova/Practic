@@ -1,6 +1,7 @@
 var passport = require('passport');
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
+let Conference = require('../models/conference');
 
 var sendJSONresponse = function(res, status, content) {
   res.status(status);
@@ -38,6 +39,18 @@ module.exports.register = function(req, res) {
   });
 
 };
+
+module.exports.createConference = function(req, res, next) {
+  console.log('request:', req.body)
+  console.log('Conference:', Conference)
+  Conference.create(req.body, (error, data) => {
+    if (error) {
+      return next(error)
+    } else {
+      res.json(data)
+    }
+  })
+}
 
 module.exports.login = function(req, res) {
 
