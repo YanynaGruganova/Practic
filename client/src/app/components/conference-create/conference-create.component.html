@@ -4,12 +4,14 @@
     <div class="card-body">
       <form [formGroup]="conferenceForm">
         <div class="form-group">
-          <label for="inputTitle">Title</label>
+          <h2>Title</h2>
           <div formGroupName="title">
-            <label for="inputName">Name</label>
-            <input class="form-control" type="text" formControlName="name">
-            <label for="inputAbbreviation">Abbreviation</label>
+            <label>Name:</label>
+            <input class="form-control" type="text" formControlName="name" >
+            <label>Abbreviation:</label>
             <input class="form-control" type="text" formControlName="abbreviation">
+            <label>Tags:</label>
+            <input class="form-control" type="text" formControlName="tags">
           </div>
           <!-- error -->
           <div class="invalid-feedback" *ngIf="submitted">
