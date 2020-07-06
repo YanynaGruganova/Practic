@@ -19,7 +19,9 @@ export class ApiService {
 
   // Create
   createConference(data): Observable<any> {
-    return this.http.post('/api/conferences/create', data)
+    let url = `${this.baseUri}/conferences/create`;
+    return this.http.post(url, data)
+    //return this.http.post('/api/conferences/create', data)
       .pipe(
         catchError(this.errorMgmt)
       )
