@@ -1,4 +1,4 @@
-var mongoose = require( 'mongoose' );
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 // Define collection and schema
@@ -33,7 +33,7 @@ let Conference = new Schema({
     sections: { type: Array }
 });
 
-module.exports = mongoose.model('Conference', Conference)
+mongoose.model('Conference', Conference)
 
 // var conferenceSchema = new mongoose.Schema({
 //     title: {

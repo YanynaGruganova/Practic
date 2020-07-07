@@ -7,7 +7,7 @@
           <h2>Title</h2>
           <div formGroupName="title">
             <label>Name:</label>
-            <input class="form-control" type="text" formControlName="name" >
+            <input class="form-control" type="text" formControlName="name">
             <label>Abbreviation:</label>
             <input class="form-control" type="text" formControlName="abbreviation">
             <label>Tags:</label>
@@ -19,43 +19,43 @@
           </div>
         </div>
 
-<!--        <div class="form-group">-->
-<!--          <label for="inputEmail3">Email</label>-->
-<!--          <input class="form-control" type="text" formControlName="email">-->
-<!--          &lt;!&ndash; error &ndash;&gt;-->
-<!--          <div class="invalid-feedback" *ngIf="submitted && myForm.email.errors?.required">-->
-<!--            Enter your email.-->
-<!--          </div>-->
-<!--          <div class="invalid-feedback" *ngIf="submitted && myForm.email.errors?.pattern">-->
-<!--            Enter valid email.-->
-<!--          </div>-->
-<!--        </div>-->
+        <!--        <div class="form-group">-->
+        <!--          <label for="inputEmail3">Email</label>-->
+        <!--          <input class="form-control" type="text" formControlName="email">-->
+        <!--          &lt;!&ndash; error &ndash;&gt;-->
+        <!--          <div class="invalid-feedback" *ngIf="submitted && myForm.email.errors?.required">-->
+        <!--            Enter your email.-->
+        <!--          </div>-->
+        <!--          <div class="invalid-feedback" *ngIf="submitted && myForm.email.errors?.pattern">-->
+        <!--            Enter valid email.-->
+        <!--          </div>-->
+        <!--        </div>-->
 
-<!--        <div class="form-group">-->
-<!--          <label for="inputPassword3">Designation</label>-->
-<!--          <select class="custom-select form-control" (change)="updateProfile($event.target.value)"-->
-<!--                  formControlName="designation">-->
-<!--            <option value="">Choose...</option>-->
-<!--            <option *ngFor="let employeeProfile of EmployeeProfile" value="{{employeeProfile}}">{{employeeProfile}}-->
-<!--            </option>-->
-<!--          </select>-->
-<!--          &lt;!&ndash; error &ndash;&gt;-->
-<!--          <div class="invalid-feedback" *ngIf="submitted && myForm.designation.errors?.required">-->
-<!--            Choose designation.-->
-<!--          </div>-->
-<!--        </div>-->
+        <!--        <div class="form-group">-->
+        <!--          <label for="inputPassword3">Designation</label>-->
+        <!--          <select class="custom-select form-control" (change)="updateProfile($event.target.value)"-->
+        <!--                  formControlName="designation">-->
+        <!--            <option value="">Choose...</option>-->
+        <!--            <option *ngFor="let employeeProfile of EmployeeProfile" value="{{employeeProfile}}">{{employeeProfile}}-->
+        <!--            </option>-->
+        <!--          </select>-->
+        <!--          &lt;!&ndash; error &ndash;&gt;-->
+        <!--          <div class="invalid-feedback" *ngIf="submitted && myForm.designation.errors?.required">-->
+        <!--            Choose designation.-->
+        <!--          </div>-->
+        <!--        </div>-->
 
-<!--        <div class="form-group">-->
-<!--          <label for="inputVerify3">Mobile No</label>-->
-<!--          <input class="form-control" type="text" formControlName="phoneNumber">-->
-<!--          &lt;!&ndash; error &ndash;&gt;-->
-<!--          <div class="invalid-feedback" *ngIf="submitted && myForm.phoneNumber.errors?.required">-->
-<!--            Enter your phone number.-->
-<!--          </div>-->
-<!--          <div class="invalid-feedback" *ngIf="submitted && myForm.phoneNumber.errors?.pattern">-->
-<!--            Enter Numbers Only-->
-<!--          </div>-->
-<!--        </div>-->
+        <!--        <div class="form-group">-->
+        <!--          <label for="inputVerify3">Mobile No</label>-->
+        <!--          <input class="form-control" type="text" formControlName="phoneNumber">-->
+        <!--          &lt;!&ndash; error &ndash;&gt;-->
+        <!--          <div class="invalid-feedback" *ngIf="submitted && myForm.phoneNumber.errors?.required">-->
+        <!--            Enter your phone number.-->
+        <!--          </div>-->
+        <!--          <div class="invalid-feedback" *ngIf="submitted && myForm.phoneNumber.errors?.pattern">-->
+        <!--            Enter Numbers Only-->
+        <!--          </div>-->
+        <!--        </div>-->
 
         <div class="form-group">
           <button class="btn btn-success btn-lg btn-block" type="button" (click)="createConference()">Create</button>

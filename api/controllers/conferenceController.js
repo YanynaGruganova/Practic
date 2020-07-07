@@ -4,9 +4,8 @@ let mongoose = require('mongoose');
 let Conference = mongoose.model('Conference');
 
 //Create Conference
-module.exports.createConference = function(req, res, next) {
-    console.log('request:', req.body)
-    console.log('Conference:', Conference)
+module.exports.createConference = (req, res, next) => {
+    console.log(req.body)
     Conference.create(req.body, (error, data) => {
         if (error) {
             return next(error)

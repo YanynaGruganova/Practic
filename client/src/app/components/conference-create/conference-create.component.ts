@@ -1,7 +1,7 @@
-import { Router } from '@angular/router';
-import { ApiService } from './../../service/api.service';
-import { Component, OnInit, NgZone } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import {Router} from '@angular/router';
+import {ApiService} from '../../service/api.service';
+import {Component, OnInit, NgZone} from '@angular/core';
+import {FormGroup, FormBuilder, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-conference-create',
@@ -11,7 +11,7 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 export class ConferenceCreateComponent implements OnInit {
   submitted = false;
   conferenceForm: FormGroup;
-  ConferenceProfile:any = ['Finance', 'BDM', 'HR', 'Sales', 'Admin']
+  ConferenceProfile: any = ['Finance', 'BDM', 'HR', 'Sales', 'Admin']
   title: string = 'Some title'
 
   constructor(
@@ -23,7 +23,8 @@ export class ConferenceCreateComponent implements OnInit {
     this.mainForm();
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+  }
 
   mainForm() {
 
@@ -35,7 +36,7 @@ export class ConferenceCreateComponent implements OnInit {
       }),
       founders: this.fb.array([
         this.fb.group({
-          fullname:['']
+          fullname: ['']
         })]),
 
       timeDate: this.fb.group({
@@ -54,7 +55,7 @@ export class ConferenceCreateComponent implements OnInit {
       }),
       directions: this.fb.array([
         this.fb.group({
-          direction:['']
+          direction: ['']
         })]),
       compositionOfCommittees: this.fb.group({
         surname: ['', [Validators.required]],
@@ -74,7 +75,7 @@ export class ConferenceCreateComponent implements OnInit {
       }),
       termsOfParticipation: this.fb.array([
         this.fb.group({
-          term:['']
+          term: ['']
         })]),
       sections: this.fb.group({
         section: this.fb.array([
@@ -83,7 +84,8 @@ export class ConferenceCreateComponent implements OnInit {
             title: ['', [Validators.required]],
             founders: this.fb.array([
               this.fb.group({
-                fullname:['']})]),
+                fullname: ['']
+              })]),
             timeStart: ['', [Validators.required]],
             dateStart: ['', [Validators.required]],
             timeEnd: ['', [Validators.required]],
@@ -98,32 +100,28 @@ export class ConferenceCreateComponent implements OnInit {
   }
 
   // Choose designation with select dropdown
-  updateProfile(e){
+  updateProfile(e) {
     this.conferenceForm.get('designation').setValue(e, {
       onlySelf: true
     })
   }
 
   // Getter to access form control
-  get myForm(){
+  get myForm() {
     return this.conferenceForm.controls;
   }
 
   createConference() {
     this.submitted = true;
-    if (!this.conferenceForm.valid) {
-      return false;
-    } else {
-      console.warn(this.conferenceForm.value)
-      this.apiService.createConference(this.conferenceForm.value).subscribe(
-        (res) => {
-          console.log('Conference successfully created!')
-          // this.ngZone.run(() => this.router.navigateByUrl('/conferences-list'))
-          this.router.navigate(['conferences-list'])
-        }, (error) => {
-          console.log(error);
-        });
-    }
+    // if (!this.conferenceForm.valid) {
+    //   return false;
+    // }
+    this.apiService.createConference(this.conferenceForm.value).subscribe(
+      (res) => {
+        console.log(res)
+        this.router.navigate(['conferences-list'])
+      }, (error) => {
+        console.log(error);
+      });
   }
-
 }
