@@ -6,102 +6,117 @@
       <p class="lead">Already a member? Please <a routerLink="/login">log in</a> instead.</p>
       <form (submit)="register()">
         <div class="form-group">
-          <label for="name">Name</label>
-          <input type="text" class="form-control" name="name" placeholder="Enter your name" required pattern="^[а-яА-ЯёЁa-zA-Z]+$" [(ngModel)]="credentials.name" #name="ngModel"  />
-          <div *ngIf="name.invalid && (name.dirty || name.touched)"
-               class="alert alert-danger">
-            <div *ngIf="name.errors.required">
-              Name is required.
-            </div>
-            <div *ngIf="name.errors?.pattern">
-              The field must contain any letters.
-            </div>
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="surname">Surname</label>
-          <input type="text" class="form-control" name="surname" placeholder="Enter your surname" required pattern="^[а-яА-ЯёЁa-zA-Z]+$" [(ngModel)]="credentials.surname" #surname="ngModel"  />
+          <label for="surname">Фамилия</label>
+          <input type="text" class="form-control" name="surname" placeholder="Enter your surname" required
+                 pattern="^[а-яА-ЯёЁa-zA-Z]+$" [(ngModel)]="credentials.surname" #surname="ngModel"/>
           <div *ngIf="surname.invalid && (surname.dirty || surname.touched)"
                class="alert alert-danger">
             <div *ngIf="surname.errors.required">
-              Surname is required.
+              Поле обязательно для заполнения.
             </div>
             <div *ngIf="surname.errors?.pattern">
-              The field must contain any letters.
+              Поле должно содержать только буквы.
             </div>
           </div>
         </div>
         <div class="form-group">
-          <label for="patronymic">Patronymic</label>
-          <input type="text" class="form-control" name="patronymic" placeholder="Enter your patronymic" required pattern="^[а-яА-ЯёЁa-zA-Z]+$" [(ngModel)]="credentials.patronymic" #patronymic="ngModel"  />
+          <label for="name">Имя</label>
+          <input type="text" class="form-control" name="name" placeholder="Enter your name" required
+                 pattern="^[а-яА-ЯёЁa-zA-Z]+$" [(ngModel)]="credentials.name" #name="ngModel"/>
+          <div *ngIf="name.invalid && (name.dirty || name.touched)"
+               class="alert alert-danger">
+            <div *ngIf="name.errors.required">
+              Поле обязательно для заполнения.
+            </div>
+            <div *ngIf="name.errors?.pattern">
+              Поле должно содержать только буквы.
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="patronymic">Отчество</label>
+          <input type="text" class="form-control" name="patronymic" placeholder="Enter your patronymic" required
+                 pattern="^[а-яА-ЯёЁa-zA-Z]+$" [(ngModel)]="credentials.patronymic" #patronymic="ngModel"/>
           <div *ngIf="patronymic.invalid && (patronymic.dirty || patronymic.touched)"
                class="alert alert-danger">
             <div *ngIf="patronymic.errors.required">
-              Patronymic is required.
+              Поле обязательно для заполнения.
             </div>
             <div *ngIf="patronymic.errors?.pattern">
-              The field must contain any letters.
+              Поле должно содержать только буквы.
             </div>
           </div>
         </div>
         <div class="form-group">
-          <label for="placeWork">Place work</label>
-          <input type="text" class="form-control" name="placeWork" placeholder="Enter your place work" required [(ngModel)]="credentials.placeWork" #placeWork="ngModel"  />
+          <label for="placeWork">Место работы</label>
+          <input type="text" class="form-control" name="placeWork" placeholder="Enter your place work" required
+                 [(ngModel)]="credentials.placeWork" #placeWork="ngModel"/>
           <div *ngIf="placeWork.invalid && (placeWork.dirty || placeWork.touched)"
                class="alert alert-danger">
             <div *ngIf="placeWork.errors.required">
-              Place work is required.
+              Поле обязательно для заполнения.
             </div>
           </div>
         </div>
         <div class="form-group">
-          <label for="position">Position</label>
-          <input type="text" class="form-control" name="position" placeholder="Enter your position" required [(ngModel)]="credentials.position" #position="ngModel"  />
+          <label for="position">Должность</label>
+          <input type="text" class="form-control" name="position" placeholder="Enter your position" required
+                 [(ngModel)]="credentials.position" #position="ngModel"/>
           <div *ngIf="position.invalid && (position.dirty || position.touched)"
                class="alert alert-danger">
             <div *ngIf="position.errors.required">
-              Position is required.
+              Поле обязательно для заполнения.
             </div>
           </div>
         </div>
         <div class="form-group">
-          <label for="academicDegree">Academic degree</label>
-          <input type="text" class="form-control" name="academicDegree" placeholder="Enter your academic degree" [(ngModel)]="credentials.academicDegree">
+          <label for="academicDegree">Ученая степень</label>
+          <input type="text" class="form-control" name="academicDegree" placeholder="Enter your academic degree"
+                 [(ngModel)]="credentials.academicDegree">
         </div>
         <div class="form-group">
-          <label for="academicRank">Academic rank</label>
-          <input type="text" class="form-control" name="academicRank" placeholder="Enter your academic rank" [(ngModel)]="credentials.academicRank">
+          <label for="academicRank">Академическое звание</label>
+          <input type="text" class="form-control" name="academicRank" placeholder="Enter your academic rank"
+                 [(ngModel)]="credentials.academicRank">
         </div>
         <div class="form-group">
-          <label for="email">Email address</label>
-          <input type="email" class="form-control" name="email" placeholder="Enter email" [(ngModel)]="credentials.email" #email="ngModel"
-                 required pattern="^[-\w.]+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,4}$" />
+          <label for="email">Email</label>
+          <input type="email" class="form-control" name="email" placeholder="Enter email"
+                 [(ngModel)]="credentials.email" #email="ngModel"
+                 required pattern="^[-\w.]+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,4}$"/>
           <div *ngIf="email.invalid && (email.dirty || email.touched)"
                class="alert alert-danger">
             <div *ngIf="email.errors.required">
-              Email is required.
+              Поле обязательно для заполнения.
             </div>
             <div *ngIf="email.errors?.pattern">
-              Invalid email.
+              Некорректный email.
             </div>
           </div>
         </div>
-        <div class="form-group">
+        <div>
           <label for="password">Password</label>
-          <input type="password" class="form-control" name="password" placeholder="Password" [(ngModel)]="credentials.password" #password="ngModel"
-                 required minlength="4" maxlength="8" />
+          <input type="password" class="form-control" name="password" placeholder="Password"
+                 [(ngModel)]="credentials.password" #password="ngModel"
+                 required minlength="4" maxlength="8"/>
           <div *ngIf="password.invalid && (password.dirty || password.touched)"
                class="alert alert-danger">
             <div *ngIf="password.errors.required">
-              Password is required.
+              Поле обязательно для заполнения.
             </div>
             <div *ngIf="password.errors.minlength">
-              Password length should be 4-8.
+              Длина пароля должна быть 4-8 символов.
             </div>
           </div>
         </div>
-        <button [disabled]="name.invalid || email.invalid || surname.invalid || patronymic.invalid || placeWork.invalid || position.invalid || password.invalid" type="submit" class="btn btn-default">Register!</button>
+        <div id="mr">
+          <button
+            [disabled]="name.invalid || email.invalid || surname.invalid || patronymic.invalid || placeWork.invalid || position.invalid || password.invalid"
+            type="submit" class="btn btn-default">Register!
+          </button>
+        </div>
       </form>
+
     </div>
   </div>
 

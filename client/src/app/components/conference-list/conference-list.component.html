@@ -1,3 +1,4 @@
+<body>
 <div class="container">
   <!-- No data message -->
   <p *ngIf="Conference.length <= 0" class="no-data text-center">There is no conferences added yet!</p>
@@ -6,31 +7,119 @@
   <table class="table table-bordered" *ngIf="Conference.length > 0">
     <thead class="table-success">
     <tr>
-      <th scope="col">Conference ID</th>
-      <th scope="col">Title</th>
+      <th scope="col">№</th>
+      <th scope="col">Название конференции</th>
+      <th scope="col">Тэги</th>
+      <th scope="col">Учредители</th>
+      <th scope="col">Время и дата проведения конференции</th>
+      <th scope="col">Место проведения</th>
+      <th scope="col">Направления</th>
+      <th scope="col">Состав организационного коммитета</th>
+      <th scope="col">Этапы проведения</th>
+      <th scope="col">Условия</th>
+      <th scope="col">Секции</th>
+      <th scope="col">Требования</th>
       <th scope="col">Actions</th>
-<!--      <th scope="col">Email</th>-->
-<!--      <th scope="col">Designation</th>-->
-<!--      <th scope="col">Phone No</th>-->
-<!--      <th scope="col center">Update</th>-->
     </tr>
     </thead>
     <tbody>
     <tr *ngFor="let conference of Conference; let i = index">
       <th scope="row">{{i + 1}}</th>
-      <td>{{conference.title.name}}</td>
-<!--      <td>{{conference.email}}</td>-->
-<!--      <td>{{conference.designation}}</td>-->
-<!--      <td>{{conference.phoneNumber}}</td>-->
+
+      <td>
+        <p><b>Название:</b> {{conference.title.name}}</p>
+        <p><b>Сокращённое название:</b> {{conference.title.abbreviation}}</p>
+      </td>
+
+      <td>
+        <div *ngFor="let alias of conference.tags; let i=index">
+          <p><b>{{i + 1}})Тэг:</b> {{conference.tags[i]}}</p>
+        </div>
+      </td>
+
+      <td>
+        <div *ngFor="let alias of conference.founders; let i=index">
+          <p><b>{{i + 1}})Учредитель:</b> {{conference.founders[i]}}</p>
+        </div>
+      </td>
+
+      <td>
+        <p><b>Дата начала:</b> {{conference.timeDate.dateStart}}</p>
+        <p><b>Время начала:</b> {{conference.timeDate.timeStart}}</p>
+        <p><b>Дата окончания:</b> {{conference.timeDate.dateEnd}}</p>
+        <p><b>Время окончания:</b> {{conference.timeDate.timeEnd}}</p>
+      </td>
+
+      <td>
+        <p><b>Страна:</b> {{conference.locations.country}}</p>
+        <p><b>Область:</b> {{conference.locations.region}}</p>
+        <p><b>Район:</b> {{conference.locations.district}}</p>
+        <p><b>Город:</b> {{conference.locations.city}}</p>
+        <p><b>Адрес:</b> {{conference.locations.address}}</p>
+        <p><b>Университет:</b> {{conference.locations.university}}</p>
+      </td>
+
+      <td>
+        <div *ngFor="let alias of conference.directions; let i=index">
+          <p><b>{{i + 1}})Направление:</b> {{conference.directions[i]}}</p>
+        </div>
+      </td>
+
+      <td>
+        <div *ngFor="let alias of conference.compositionOfCommittees; let i=index">
+          <p><b>{{i + 1}})Фамилия:</b> {{conference.compositionOfCommittees[i].surname}}</p>
+          <p><b>Имя:</b> {{conference.compositionOfCommittees[i].name}}</p>
+          <p><b>Отчество:</b> {{conference.compositionOfCommittees[i].patronymic}}</p>
+          <p><b>Электронная почта:</b> {{conference.compositionOfCommittees[i].email}}</p>
+          <p><b>Место работы:</b> {{conference.compositionOfCommittees[i].workPlace}}</p>
+          <p><b>Должность:</b> {{conference.compositionOfCommittees[i].position}}</p>
+          <p><b>Роль в системе:</b> {{conference.compositionOfCommittees[i].role}}</p>
+        </div>
+      </td>
+
+      <td>
+        <div *ngFor="let alias of conference.conferenceStages; let i=index">
+          <p><b>{{i + 1}})Название:</b> {{conference.conferenceStages[i].nameStage}}</p>
+          <p><b>Дата начала:</b> {{conference.conferenceStages[i].dateStart}}</p>
+          <p><b>Время начала:</b> {{conference.conferenceStages[i].timeStart}}</p>
+          <p><b>Дата окончания:</b> {{conference.conferenceStages[i].dateEnd}}</p>
+          <p><b>Время окончания:</b> {{conference.conferenceStages[i].timeEnd}}</p>
+        </div>
+      </td>
+
+      <td>
+        <div *ngFor="let alias of conference.termsOfParticipation; let i=index">
+          <p><b>{{i + 1}})Условие:</b> {{conference.termsOfParticipation[i]}}</p>
+        </div>
+      </td>
+
+      <td>
+        <div *ngFor="let alias of conference.sections; let i=index">
+          <p><b>{{i + 1}})Номер:</b> {{conference.sections[i].number}}</p>
+          <p><b>Название:</b> {{conference.sections[i].nameSection}}</p>
+          <p><b>Учредители:</b> {{conference.sections[i].founders}}</p>
+          <p><b>Дата начала:</b> {{conference.sections[i].dateStart}}</p>
+          <p><b>Время начала:</b> {{conference.sections[i].timeStart}}</p>
+          <p><b>Дата окончания:</b> {{conference.sections[i].dateEnd}}</p>
+          <p><b>Время окончания:</b> {{conference.sections[i].timeEnd}}</p>
+          <p><b>Состав секции:</b> {{conference.sections[i].composition}}</p>
+        </div>
+      </td>
+
+      <td>
+          <p>{{conference.requirements}}</p>
+      </td>
+
       <td class="text-center edit-block">
-          <span class="edit" [routerLink]="['/edit-conference/', conference._id]">
+        <p><span class="edit" [routerLink]="['/edit-conference/', conference._id]">
             <button type="button" class="btn btn-success btn-sm">Edit</button>
-          </span>
-        <span class="delete" (click)="removeConference(conference, i)">
+          </span></p>
+        <p><span class="delete" (click)="removeConference(conference, i)">
             <button type="button" class="btn btn-danger btn-sm">Delete</button>
-          </span>
+          </span></p>
       </td>
     </tr>
     </tbody>
   </table>
 </div>
+</body>

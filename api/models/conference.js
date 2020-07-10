@@ -6,8 +6,8 @@ let Conference = new Schema({
     title: {
         name: { type: String },
         abbreviation: { type: String },
-        tags: { type: Array }
     },
+    tags: { type: Array },
     founders: { type: Array },
     timeDate: {
         timeStart: { type: String },
@@ -15,22 +15,20 @@ let Conference = new Schema({
         timeEnd: { type: String },
         dateEnd: { type: String }
     },
-    locations: { type: Array },
+    locations: {
+        country: { type: String },
+        region: { type: String },
+        district: { type: String },
+        city: { type: String },
+        address: { type: String },
+        university: { type: String }
+    },
     directions: { type: Array },
     compositionOfCommittees: { type: Array },
     conferenceStages: { type: Array },
     termsOfParticipation: { type: Array },
-    requirements: {
-        fieldname: { type: String },
-        originalname: { type: String },
-        encoding: { type: String },
-        mimetype: { type: String },
-        destination: { type: String },
-        filename: { type: String },
-        path: { type: String },
-        size: { type: Number }
-    },
-    sections: { type: Array }
+    requirements: { type: Array },
+    sections:{ type: Array },
 });
 
 mongoose.model('Conference', Conference)

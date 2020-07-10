@@ -1,7 +1,7 @@
 import {Router} from '@angular/router';
 import {ApiService} from '../../service/api.service';
 import {Component, OnInit, NgZone} from '@angular/core';
-import {FormGroup, FormBuilder, Validators} from "@angular/forms";
+import {FormGroup, FormBuilder, Validators, FormArray} from "@angular/forms";
 
 @Component({
   selector: 'app-conference-create',
@@ -11,7 +11,7 @@ import {FormGroup, FormBuilder, Validators} from "@angular/forms";
 export class ConferenceCreateComponent implements OnInit {
   submitted = false;
   conferenceForm: FormGroup;
-  ConferenceProfile: any = ['Finance', 'BDM', 'HR', 'Sales', 'Admin']
+  // ConferenceProfile: any = ['Finance', 'BDM', 'HR', 'Sales', 'Admin']
   title: string = 'Some title'
 
   constructor(
@@ -30,85 +30,144 @@ export class ConferenceCreateComponent implements OnInit {
 
     this.conferenceForm = this.fb.group({
       title: this.fb.group({
-        name: ['', [Validators.required]],
-        abbreviation: ['', [Validators.required]],
-        tags: [''],
+        // name: ['', [Validators.required]],
+        name: [''],
+        abbreviation: [''],
       }),
+      tags: this.fb.array([
+        this.fb.control('')
+      ]),
       founders: this.fb.array([
-        this.fb.group({
-          fullname: ['']
-        })]),
-
+        this.fb.control('')
+      ]),
       timeDate: this.fb.group({
-        timeStart: ['', [Validators.required]],
-        dateStart: ['', [Validators.required]],
-        timeEnd: ['', [Validators.required]],
-        dateEnd: ['', [Validators.required]],
+        timeStart: [''],
+        dateStart: [''],
+        timeEnd: [''],
+        dateEnd: [''],
       }),
       locations: this.fb.group({
-        country: ['', [Validators.required]],
+        country: [''],
         region: [''],
         district: [''],
-        city: ['', [Validators.required]],
-        address: ['', [Validators.required]],
-        university: ['', [Validators.required]]
+        city: [''],
+        address: [''],
+        university: ['']
       }),
       directions: this.fb.array([
-        this.fb.group({
-          direction: ['']
-        })]),
-      compositionOfCommittees: this.fb.group({
-        surname: ['', [Validators.required]],
-        name: ['', [Validators.required]],
-        patronymic: ['', [Validators.required]],
-        email: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
-        workPlace: ['', [Validators.required]],
-        position: ['', [Validators.required]],
-        role: ['']
-      }),
-      conferenceStages: this.fb.group({
-        title: ['', [Validators.required]],
-        timeStart: ['', [Validators.required]],
-        dateStart: ['', [Validators.required]],
-        timeEnd: ['', [Validators.required]],
-        dateEnd: ['', [Validators.required]]
-      }),
+        this.fb.control('')
+      ]),
+      compositionOfCommittees: this.fb.array([
+     this.addComposition()
+      ]),
+      conferenceStages: this.fb.array([
+        this.addStages()
+      ]),
       termsOfParticipation: this.fb.array([
-        this.fb.group({
-          term: ['']
-        })]),
-      sections: this.fb.group({
-        section: this.fb.array([
-          this.fb.group({
-            number: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
-            title: ['', [Validators.required]],
-            founders: this.fb.array([
-              this.fb.group({
-                fullname: ['']
-              })]),
-            timeStart: ['', [Validators.required]],
-            dateStart: ['', [Validators.required]],
-            timeEnd: ['', [Validators.required]],
-            dateEnd: ['', [Validators.required]],
-            compositionOfSection: ['', [Validators.required]]
-          })
-        ])
+        this.fb.control('')
+      ]),
+      sections: this.fb.array([
+        this.addSection()
+      ]),
+      requirements: this.fb.group({
+        requirement: ['']
       }),
-      requirements: ['', [Validators.required]],
-      _id: ['']
     })
   }
+
 
   // Choose designation with select dropdown
-  updateProfile(e) {
-    this.conferenceForm.get('designation').setValue(e, {
-      onlySelf: true
-    })
-  }
+  // updateProfile(e) {
+  //   this.conferenceForm.get('designation').setValue(e, {
+  //     onlySelf: true
+  //   })
+  // }
 
   // Getter to access form control
-  get myForm() {
-    return this.conferenceForm.controls;
+  // get myForm() {
+  //   return this.conferenceForm.controls;
+  // }
+
+  get tags() {
+    return this.conferenceForm.get('tags') as FormArray;
+  }
+  addTag() {
+    this.tags.push(this.fb.control(''));
+  }
+
+  get founders() {
+    return this.conferenceForm.get('founders') as FormArray;
+  }
+  addFounder() {
+    this.founders.push(this.fb.control(''));
+  }
+
+  get directions() {
+    return this.conferenceForm.get('directions') as FormArray;
+  }
+  addDirection() {
+    this.directions.push(this.fb.control(''));
+  }
+
+  get compositionOfCommittees() {
+    return this.conferenceForm.get('compositionOfCommittees') as FormArray;
+  }
+  addComposition(){
+    //debugger
+    return this.fb.group({
+      surname: [''],
+      name: [''],
+      patronymic: [''],
+      email: [''],
+      workPlace: [''],
+      position: [''],
+      role: [''],
+    })
+  }
+  addCompositionOfCommittees() {
+    this.compositionOfCommittees.push(this.addComposition());
+  }
+
+  get conferenceStages() {
+    return this.conferenceForm.get('conferenceStages') as FormArray;
+  }
+  addStages(){
+    return this.fb.group({
+      nameStage: [''],
+      dateStart: [''],
+      timeStart: [''],
+      dateEnd: [''],
+      timeEnd: [''],
+    })
+  }
+  addConferenceStages() {
+    this.conferenceStages.push(this.addStages());
+  }
+
+  get termsOfParticipation() {
+    return this.conferenceForm.get('termsOfParticipation') as FormArray;
+  }
+  addTermsOfParticipation() {
+    this.termsOfParticipation.push(this.fb.control(''));
+  }
+
+  get sections() {
+    return this.conferenceForm.get('sections') as FormArray;
+  }
+  addSection(){
+    return this.fb.group({
+      number: [''],
+      nameSection: [''],
+      founders: [''],
+      dateStart: [''],
+      timeStart: [''],
+      dateEnd: [''],
+      timeEnd: [''],
+      composition: [''],
+    })
+  }
+  addSections() {
+    this.sections.push(this.addSection());
   }
 
   createConference() {

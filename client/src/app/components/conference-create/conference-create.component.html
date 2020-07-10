@@ -1,61 +1,192 @@
+<body>
 <div class="row justify-content-center">
   <div class="col-md-4 register-employee">
     <!-- form card register -->
     <div class="card-body">
       <form [formGroup]="conferenceForm">
         <div class="form-group">
-          <h2>Title</h2>
           <div formGroupName="title">
-            <label>Name:</label>
+            <h2>Название конференции</h2>
+            <label>Название:</label>
             <input class="form-control" type="text" formControlName="name">
-            <label>Abbreviation:</label>
+            <label>Сокращённое название:</label>
             <input class="form-control" type="text" formControlName="abbreviation">
-            <label>Tags:</label>
-            <input class="form-control" type="text" formControlName="tags">
           </div>
+
+          <div formArrayName="tags">
+            <h2>Тэги</h2>
+            <button class="btn btn-default" type="button" (click)="addTag()">Добавить</button>
+            <div *ngFor="let alias of tags.controls; let i=index">
+              <label>Тэг:</label>
+              <input class="form-control" type="text" [formControlName]="i">
+            </div>
+          </div>
+
+          <div formArrayName="founders">
+            <h2>Учредители</h2>
+            <button class="btn btn-default" type="button" (click)="addFounder()">Добавить</button>
+            <div *ngFor="let alias of founders.controls; let i=index">
+              <label>ФИО учредителя:</label>
+              <input class="form-control" type="text" [formControlName]="i">
+            </div>
+          </div>
+
+          <div formGroupName="timeDate">
+            <h2>Время и дата проведения</h2>
+            <label>Дата начала:</label>
+            <input class="form-control" type="date" formControlName="dateStart">
+            <label>Время начала:</label>
+            <input class="form-control" type="time" formControlName="timeStart">
+            <label>Дата окончания:</label>
+            <input class="form-control" type="date" formControlName="dateEnd">
+            <label>Время окончания:</label>
+            <input class="form-control" type="time" formControlName="timeEnd">
+          </div>
+
+          <div formGroupName="locations">
+            <h2>Место проведения</h2>
+            <label>Страна:</label>
+            <input class="form-control" type="text" formControlName="country">
+            <label>Область:</label>
+            <input class="form-control" type="text" formControlName="region">
+            <label>Район:</label>
+            <input class="form-control" type="text" formControlName="district">
+            <label>Город:</label>
+            <input class="form-control" type="text" formControlName="city">
+            <label>Адрес:</label>
+            <input class="form-control" type="text" formControlName="address">
+            <label>Университет:</label>
+            <input class="form-control" type="text" formControlName="university">
+          </div>
+
+          <div formArrayName="directions">
+            <h2>Направление</h2>
+            <button class="btn btn-default" type="button" (click)="addDirection()">Добавить</button>
+            <div *ngFor="let alias of directions.controls; let i=index">
+              <label>Название направления:</label>
+              <input class="form-control" type="text" [formControlName]="i">
+            </div>
+          </div>
+
+          <ng-container formArrayName="compositionOfCommittees">
+            <h2>Состав организационного коммитета</h2>
+            <button class="btn btn-default" type="button" (click)="addCompositionOfCommittees()">Добавить</button>
+            <div *ngFor="let alias of compositionOfCommittees.controls; let i=index">
+              <h3><label>{{i + 1}})</label></h3>
+              <ng-container [formGroupName]="i">
+                <p><label>Фамилия:</label></p>
+                <input class="form-control" type="text" formControlName="surname">
+                <label>Имя:</label>
+                <input class="form-control" type="text" formControlName="name">
+                <label>Отчество:</label>
+                <input class="form-control" type="text" formControlName="patronymic">
+                <label>Электронная почта:</label>
+                <input class="form-control" type="text" formControlName="email">
+                <label>Место работы:</label>
+                <input class="form-control" type="text" formControlName="workPlace">
+                <label>Должность:</label>
+                <input class="form-control" type="text" formControlName="position">
+                <div>
+                  <p><label>Роль в системе:</label></p>
+                  <!-- Default inline 1-->
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" formControlName="role" value="chairman" class="custom-control-input"
+                           id="defaultInline1" name="role">
+                    <label class="custom-control-label" for="defaultInline1">Руководитель</label>
+                  </div>
+
+                  <!-- Default inline 2-->
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" formControlName="role" value="secretary" class="custom-control-input"
+                           id="defaultInline2" name="role">
+                    <label class="custom-control-label" for="defaultInline2">Секретарь</label>
+                  </div>
+
+                  <!-- Default inline 3-->
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" formControlName="role" value="speaker" class="custom-control-input"
+                           id="defaultInline3" name="role">
+                    <label class="custom-control-label" for="defaultInline3">Докладчик</label>
+                  </div>
+                </div>
+              </ng-container>
+            </div>
+          </ng-container>
+
+          <ng-container formArrayName="conferenceStages">
+            <h2>Этапы проведения</h2>
+            <button class="btn btn-default" type="button" (click)="addConferenceStages()">Добавить</button>
+            <div *ngFor="let alias of conferenceStages.controls; let i=index">
+              <h3><label>{{i + 1}})</label></h3>
+              <ng-container [formGroupName]="i">
+                <p><label>Название:</label></p>
+                <input class="form-control" type="text" formControlName="nameStage">
+                <label>Дата начала:</label>
+                <input class="form-control" type="date" formControlName="dateStart">
+                <label>Время начала:</label>
+                <input class="form-control" type="time" formControlName="timeStart">
+                <label>Дата окончания:</label>
+                <input class="form-control" type="date" formControlName="dateEnd">
+                <label>Время окончания:</label>
+                <input class="form-control" type="time" formControlName="timeEnd">
+              </ng-container>
+            </div>
+          </ng-container>
+
+          <div formArrayName="termsOfParticipation">
+            <h2>Условия</h2>
+            <button class="btn btn-default" type="button" (click)="addTermsOfParticipation()">Добавить</button>
+            <div *ngFor="let alias of termsOfParticipation.controls; let i=index">
+              Условие:
+              <input class="form-control" type="text" [formControlName]="i">
+            </div>
+          </div>
+
+          <ng-container formArrayName="sections">
+            <h2>Секции</h2>
+            <button class="btn btn-default" type="button" (click)="addSections()">Добавить секцию</button>
+            <div *ngFor="let alias of sections.controls; let i=index">
+              <h3><label>{{i + 1}})</label></h3>
+              <ng-container [formGroupName]="i">
+                <p><label>Номер:</label></p>
+                <input class="form-control" type="number" formControlName="number">
+                <label>Название:</label>
+                <input class="form-control" type="text" formControlName="nameSection">
+                <label>Учредители:</label>
+                <textarea input class="form-control" type="text" formControlName="founders"></textarea>
+                <label>Дата начала:</label>
+                <input class="form-control" type="date" formControlName="dateStart">
+                <label>Время начала:</label>
+                <input class="form-control" type="time" formControlName="timeStart">
+                <label>Дата окончания:</label>
+                <input class="form-control" type="date" formControlName="dateEnd">
+                <label>Время окончания:</label>
+                <input class="form-control" type="time" formControlName="timeEnd">
+                <label>Состав секции:</label>
+                <textarea input class="form-control" type="text" formControlName="composition"></textarea>
+              </ng-container>
+            </div>
+          </ng-container>
+
+          <div formGroupName="requirements">
+            <h2>Загрузите файл с требованиями</h2>
+            <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+            <div class="example-1">
+              <div class="form-group">
+                <label class="label">
+                  <i class="material-icons">attach_file</i>
+                  <span class="title">Добавить файл</span>
+                  <input type="file" formControlName="requirement">
+                </label>
+              </div>
+            </div>
+          </div>
+
           <!-- error -->
           <div class="invalid-feedback" *ngIf="submitted">
             Name is required.
           </div>
         </div>
-
-        <!--        <div class="form-group">-->
-        <!--          <label for="inputEmail3">Email</label>-->
-        <!--          <input class="form-control" type="text" formControlName="email">-->
-        <!--          &lt;!&ndash; error &ndash;&gt;-->
-        <!--          <div class="invalid-feedback" *ngIf="submitted && myForm.email.errors?.required">-->
-        <!--            Enter your email.-->
-        <!--          </div>-->
-        <!--          <div class="invalid-feedback" *ngIf="submitted && myForm.email.errors?.pattern">-->
-        <!--            Enter valid email.-->
-        <!--          </div>-->
-        <!--        </div>-->
-
-        <!--        <div class="form-group">-->
-        <!--          <label for="inputPassword3">Designation</label>-->
-        <!--          <select class="custom-select form-control" (change)="updateProfile($event.target.value)"-->
-        <!--                  formControlName="designation">-->
-        <!--            <option value="">Choose...</option>-->
-        <!--            <option *ngFor="let employeeProfile of EmployeeProfile" value="{{employeeProfile}}">{{employeeProfile}}-->
-        <!--            </option>-->
-        <!--          </select>-->
-        <!--          &lt;!&ndash; error &ndash;&gt;-->
-        <!--          <div class="invalid-feedback" *ngIf="submitted && myForm.designation.errors?.required">-->
-        <!--            Choose designation.-->
-        <!--          </div>-->
-        <!--        </div>-->
-
-        <!--        <div class="form-group">-->
-        <!--          <label for="inputVerify3">Mobile No</label>-->
-        <!--          <input class="form-control" type="text" formControlName="phoneNumber">-->
-        <!--          &lt;!&ndash; error &ndash;&gt;-->
-        <!--          <div class="invalid-feedback" *ngIf="submitted && myForm.phoneNumber.errors?.required">-->
-        <!--            Enter your phone number.-->
-        <!--          </div>-->
-        <!--          <div class="invalid-feedback" *ngIf="submitted && myForm.phoneNumber.errors?.pattern">-->
-        <!--            Enter Numbers Only-->
-        <!--          </div>-->
-        <!--        </div>-->
 
         <div class="form-group">
           <button class="btn btn-success btn-lg btn-block" type="button" (click)="createConference()">Create</button>
@@ -66,3 +197,4 @@
   </div><!-- form card register -->
 </div>
 
+</body>
